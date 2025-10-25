@@ -163,6 +163,13 @@ namecd -un myname
 clearcd
 ```
 
+## Feedback
+
+If you try this script, I’d love to hear from you!  
+- Open an **issue** for bugs or suggestions  
+- Star ⭐ the repo if you find it useful  
+- Fork 🍴 to customize for your workflow
+
 
 
 
