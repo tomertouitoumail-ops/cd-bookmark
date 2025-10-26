@@ -50,6 +50,11 @@ rcd                                : Alias for rmcd
  ```
 ---
 
+
+<video src="https://github.com/user-attachments/assets/93083f13-7fe7-4ba0-ae4a-eca5835e0d83" width="500" controls></video>
+
+
+
 ## Installation
 
 1. Copy the script to a directory  
