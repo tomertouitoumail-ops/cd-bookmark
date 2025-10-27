@@ -53,6 +53,7 @@ rcd                                : Alias for rmcd
    ```bash
    cd ~/scripts/    # or any directory you prefer
    git clone https://github.com/tomertouitoumail-ops/cd-bookmark.git
+   cd cd-bookmark/
    . cd-bookmark.sh
    ```
    If you get an error when running `. cd-bookmark.sh`, make sure the script is executable:
