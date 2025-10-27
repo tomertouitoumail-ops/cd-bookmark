@@ -8,7 +8,6 @@ Licensed under the MIT License.
 ---
 
 ## Features
-
 - Add bookmarks with optional names.
 - Normal bookmarks are inserted before bound bookmarks.
 - Bound bookmarks always appear last.
@@ -19,20 +18,18 @@ Licensed under the MIT License.
 - Highlight the current directory in the bookmark list.
 - Auto-completion for bookmark names.
 
----
 ## Commands
-
 ```bash
 addcd [dir]                       : Add a normal bookmark (defaults to current directory if no directory is specified)
 addcd -n <name>                   : Add current directory as a normal bookmark with a name
 addcd -b [dir]                    : Add a bound bookmark (defaults to current directory)
 addcd -b -n <name>                : Add current directory as a bound bookmark with a name
                                     (-bn or -nb also work)
-
+addcd ../../dir -b -n <name>      : Add  directory as a bound bookmark with a name
+                                   
 lscd                              : List normal bookmarks only (absolute paths by default)
 lscd -b                           : List all bookmarks (normal + bound)
 lscd -r                           : List bookmarks in relative paths (works with -b as -rb or -br)
-lscd -a                           : List bookmarks in absolute paths (works with -b as -ba or -ab)
 
 gocd <name|index>                 : Change directory to a bookmark by name or index
 
@@ -48,48 +45,36 @@ clearcd                           : Remove all normal bookmarks (bound bookmarks
 lcd                                : Alias for lscd
 rcd                                : Alias for rmcd
  ```
----
-
-
 <video src="https://github.com/user-attachments/assets/93083f13-7fe7-4ba0-ae4a-eca5835e0d83" width="500" controls></video>
 
-
-
 ## Installation
-
-1. Copy the script to a directory  
-   Place `cd-bookmark.sh` anywhere you like, for example `~/scripts/`.
+1. Source the script in your shell   
+   You can place it anywhere you like — for example, in ~/scripts/:
    ```bash
-   cp cd-bookmark.sh ~/scripts/
+   cd ~/scripts/    # or any directory you prefer
+   git clone https://github.com/tomertouitoumail-ops/cd-bookmark.git
+   . cd-bookmark.sh
    ```
-2. Make the script executable
+   If you get an error when running `. cd-bookmark.sh`, make sure the script is executable:
    ```bash
    chmod +x ~/scripts/cd-bookmark.sh
    ```
+2. load the script automatically in every shell session 
+   Add the following line to your ~/.bashrc (or ~/.bash_profile) so that it loads every time you open a new terminal:
+   ```bash
+   source ~/scripts/cd-bookmark.sh    # Adjust the path if needed
+   ```   
 3. (Optional) Change the bookmarks storage location
    By default, bookmarks are saved in `$HOME/.dir_bookmarks`.  
-   To change this, open `cd-bookmark.sh` and set the absolute path in the `CONF1` variable:
+   To change this, open cd-bookmark.sh and modify the CONF1 variable:
    ```bash
    # Inside cd-bookmark.sh eddit and change
-   CONF1="/absolute/path/to/your/dir/where/you/want/to/save/the/file"
-   ```
-   If `CONF1` is left empty, the default location `$HOME/.dir_bookmarks` will be used.
-4. Source the script in your shell 
-   Add the following line to your `.bashrc` or `.zshrc` to load it automatically in every shell session:
-   ```bash
-   source ~/scripts/cd-bookmark.sh
-   ```
-5. Reload your shell configuration
-   ```bash
-   source ~/.bashrc
-   # or
-   source ~/.zshrc
-   ```
+   CONF1="/absolute/path/to/your/bookmarks/file"
+   ```   
 After this, all commands like `addcd`, `lscd`, `gocd`, `rmcd`, `namecd`, and `clearcd` will be available in your shell.
 ## Usage Examples
 
 ### Adding Bookmarks
-
 ```bash
 # Add current directory as a normal bookmark
 addcd
@@ -105,9 +90,7 @@ addcd -b -n importantdir
 # or
 addcd -bn importantdir
 ```
-
 ### Listing Bookmarks
-
 ```bash
 # List normal bookmarks (default absolute paths)
 lscd
@@ -124,9 +107,7 @@ lscd -br   # alternative flag order
 lscd -a
 lscd -ba   # absolute + bound
 ```
-
 ### Navigating to a Bookmark
-
 ```bash
 # Go to bookmark by name
 gocd myproject
@@ -134,9 +115,7 @@ gocd myproject
 # Go to bookmark by index
 gocd 2
 ```
-
 ### Removing Bookmarks
-
 ```bash
 # Remove a normal bookmark by name or index
 rmcd myproject
@@ -148,9 +127,7 @@ rmcd -b importantdir
 rmcd -b 3
 rcd -b myname  # alias works
 ```
-
 ### Assigning or Removing Names
-
 ```bash
 # Assign a name to a bookmark
 namecd -n 2 newname
@@ -160,20 +137,16 @@ namecd -n oldname newname
 namecd -un 2
 namecd -un myname
 ```
-
 ### Clearing Normal Bookmarks
-
 ```bash
 # Remove all normal bookmarks, but keep bound bookmarks
 clearcd
 ```
-
 ## Feedback
-
 If you try this script, I’d love to hear from you!  
 - Open an **issue** for bugs or suggestions  
 - Star ⭐ the repo if you find it useful  
-- Fork 🍴 to customize for your workflow
+
 
 
 
